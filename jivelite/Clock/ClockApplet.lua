@@ -62,7 +62,7 @@ local function _isJogglerSkin(skinName)
 end
 
 local function _isWQVGASkin(skinName)
-    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' then
+    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
     	return true
     end
 end
@@ -81,11 +81,12 @@ local function _imgpath(self)
 		skinName = 'JogglerSkin'
 		
 	elseif _isWQVGASkin(skinName) then
-		skinName = "WQVGAsmallSkin"
+		-- skinName = "WQVGAsmallSkin"
+		skinName = "Wav35Skin"
 	
 	elseif _isHDSkin(skinName) then
 		skinName = "HDSkin"
-	
+
 	end
 	
     return "applets/" .. skinName .. "/images/"
@@ -979,7 +980,7 @@ end
 function DotMatrix:getDotMatrixClockSkin(skinName)
 
     -- 10' and 3'UIs send the same clock
-    if skinName == 'WQVGAlargeSkin' then
+    if skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
         skinName = 'WQVGAsmallSkin'
     end
 
@@ -1844,8 +1845,11 @@ function WordClock:getSkinParams(skinName)
     log:debug("Image path - " .. self.imgpath)
     
     if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
-        -- HDSkin is using the Joggler's artwork. Quite a mess...
+	-- HDSkin is using the Joggler's artwork. Quite a mess...
         local imgpath = string.gsub(self.imgpath, 'HDSkin', 'JogglerSkin') .. "Clocks/WordClock/"
+        
+        -- Wav35Skin is using the WQVGASkin artwork, so install WQVGASkin as well. Another mess...
+	local imgpath = string.gsub(self.imgpath, 'Wav35Skin', 'WQVGAsmallSkin') .. "Clocks/WordClock/"
 
         local params = {
             textIt        = imgpath .. 'text-it.png',
