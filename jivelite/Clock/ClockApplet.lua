@@ -980,7 +980,7 @@ end
 function DotMatrix:getDotMatrixClockSkin(skinName)
 
     -- 10' and 3'UIs send the same clock
-    if skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
+    if skinName == 'WQVGAlargeSkin' then
         skinName = 'WQVGAsmallSkin'
     end
 
@@ -989,9 +989,13 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
     local s = {}
 
-    if skinName == 'WQVGAsmallSkin' then
+    if skinName == 'WQVGAsmallSkin' or skinName == 'Wav35Skin' then
 
         local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/wallpaper_clock_dotmatrix.png")
+        local bgHeight = 272
+        if skinName == 'Wav35Skin' then
+          bgHeight = 320
+        end
 
         local _dotMatrixDigit = function(self, digit)
             local fileName = "Clocks/Dot_Matrix/dotmatrix_clock_" .. tostring(digit) .. ".png"
@@ -1093,7 +1097,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
         s.Clock = {
             w = 480,
-            h = 272,
+            h = bgHeight,
             bgImg = dotMatrixBackground,
             h1 = _uses(_clockDigit, {
                 x = x.h1,

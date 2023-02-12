@@ -15,3 +15,8 @@ sudo ln -s /mnt/mmcblk0p2/tce/jive-mods/wallpaper_clock_analog.png wallpaper_clo
 cd /opt/jivelite/share/jive/applets/Wav35Skin/images/Clocks/Digital
 sudo rm wallpaper_clock_digital.png
 sudo ln -s /mnt/mmcblk0p2/tce/jive-mods/wallpaper_clock_digital.png wallpaper_clock_digital.png
+
+# Resized Dot Matrix clock background
+cd /opt/jivelite/share/jive/applets/Wav35Skin/images/Clocks/Dot_Matrix
+sudo rm wallpaper_clock_dotmatrix.png
+sudo ln -s /mnt/mmcblk0p2/tce/jive-mods/wallpaper_clock_dotmatrix.png wallpaper_clock_dotmatrix.png
